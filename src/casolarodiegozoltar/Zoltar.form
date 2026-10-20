@@ -28,15 +28,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Component id="jComboBox1" min="-2" pref="215" max="-2" attributes="0"/>
+              <Component id="cb_Personalità" min="-2" pref="215" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jTextField1" min="-2" pref="211" max="-2" attributes="0"/>
+              <Component id="txt_msg" min="-2" pref="211" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
+              <Component id="btn_Help" min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="377" max="-2" attributes="0"/>
-              <EmptySpace pref="208" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btn_invio" min="-2" pref="98" max="-2" attributes="0"/>
+              <EmptySpace pref="98" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,19 +49,26 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField1" alignment="3" min="-2" pref="87" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" pref="87" max="-2" attributes="0"/>
+                  <Component id="txt_msg" alignment="3" min="-2" pref="87" max="-2" attributes="0"/>
+                  <Component id="cb_Personalità" alignment="3" min="-2" pref="87" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="43" max="32767" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="378" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" alignment="1" min="-2" pref="378" max="-2" attributes="0"/>
+                  <Component id="btn_invio" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                  <Component id="btn_Help" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cb_Personalit&#xe0;">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="8b" green="8b" red="8b" type="rgb"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
             <StringItem index="0" value="Item 1"/>
@@ -71,8 +82,11 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="txt_msg">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="8b" green="8b" red="8b" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
@@ -83,13 +97,32 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="txt_Output">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="8b" green="8b" red="8b" type="rgb"/>
+            </Property>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btn_invio">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="8b" green="8b" red="8b" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_Help">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="33" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
