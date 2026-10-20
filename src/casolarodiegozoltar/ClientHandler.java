@@ -27,7 +27,7 @@ class ClientHandler implements Runnable {
             Scanner scanner = new Scanner(System.in);
 
             // Primo messaggio
-            dataOutputStream.writeUTF("Ciao sono il server di Taddeo!");
+            dataOutputStream.writeUTF("Ciao sono Zoltar! (Scrivi Help per i comandi)");
 
             String clientMessage;
             String message;
