@@ -4,12 +4,11 @@
  */
 package casolarodiegozoltar;
 
-
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.io.*;
-import java.net.*;
-import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
-import casolarodiegozoltar.ClientHandler;
+
+
+
 /**
  *
  * @author CASOLARO.DIEGO
@@ -19,31 +18,22 @@ public class CasolaroDiegoZoltar {
      /**
      * @param args the command line arguments
      */
-    private static final List<ClientHandler> clients = new CopyOnWriteArrayList<>();
 
-    public static void main(String[] args) throws IOException {
-        int porta = 12345;
-        ServerSocket server = new ServerSocket(porta);
-        System.out.println("Server avviato sulla porta " + porta + "...");
+    public static void main(String[] args) {
+        new Thread(() -> {
+            try {
+                ZoltarServer.avvia();
+            } catch (IOException e) {
+                System.out.println("Errore server: " + e.getMessage());
+            }
+        }).start();
 
-        while (true) {
-            Socket clientSocket = server.accept();
-            System.out.println("Nuovo client connesso: " + clientSocket.getInetAddress());
-
-            ClientHandler handler = new ClientHandler(clientSocket);
-            clients.add(handler); // Aggiunge il client alla lista
-
-            new Thread(handler).start();
-        }
+        java.awt.EventQueue.invokeLater(() -> {
+            Zoltar frmZoltar = new Zoltar();
+            frmZoltar.setVisible(true);
+        });
     }
 
     // Metodo per inviare un messaggio a tutti gli altri client
-    public static void broadcast(String message, ClientHandler sender) {
-        for (ClientHandler client : clients) {
-            if (client != sender) { // Non invia il messaggio al mittente stesso
-                client.sendMessage(message);
-            }
-        }
-    }
     
 }

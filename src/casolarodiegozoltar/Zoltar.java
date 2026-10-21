@@ -8,6 +8,7 @@ package casolarodiegozoltar;
  *
  * @author Administrator
  */
+import java.io.IOException;
 public class Zoltar extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Zoltar.class.getName());
@@ -15,8 +16,35 @@ public class Zoltar extends javax.swing.JFrame {
     /**
      * Creates new form Zoltar
      */
+    private CasolaroDiegoClient client;
     public Zoltar() {
         initComponents();
+        getContentPane().setBackground(
+            new java.awt.Color(51, 153, 0)
+        );
+        cb_Personalita.setModel(
+            new javax.swing.DefaultComboBoxModel<>(
+                new String[] {
+                    "Default",
+                    "Ottimista",
+                    "Pessimista"
+                }
+            )
+        );
+        java.net.URL url = getClass().getResource("/img/help.png");
+        if (url != null) {
+            javax.swing.ImageIcon icona =
+                new javax.swing.ImageIcon(url);
+            java.awt.Image immagine = icona.getImage()
+                .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
+            btn_Help.setIcon(new javax.swing.ImageIcon(immagine));
+        }
+        btn_Help.setToolTipText("Aiuto");
+        try {
+            client = new CasolaroDiegoClient();
+        } catch (IOException e) {
+            client = null;
+        }
     }
 
     /**
@@ -28,7 +56,7 @@ public class Zoltar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cb_Personalità = new javax.swing.JComboBox<>();
+        cb_Personalita = new javax.swing.JComboBox<>();
         txt_msg = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_Output = new javax.swing.JTextArea();
@@ -38,11 +66,12 @@ public class Zoltar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 153, 0));
 
-        cb_Personalità.setBackground(new java.awt.Color(139, 139, 139));
-        cb_Personalità.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_Personalita.setBackground(new java.awt.Color(139, 139, 139));
+        cb_Personalita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_Personalita.addActionListener(this::cb_PersonalitaActionPerformed);
 
         txt_msg.setBackground(new java.awt.Color(139, 139, 139));
-        txt_msg.setText("jTextField1");
+        txt_msg.addActionListener(this::txt_msgActionPerformed);
 
         txt_Output.setBackground(new java.awt.Color(139, 139, 139));
         txt_Output.setColumns(20);
@@ -50,10 +79,13 @@ public class Zoltar extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txt_Output);
 
         btn_invio.setBackground(new java.awt.Color(139, 139, 139));
-        btn_invio.setText("jButton1");
+        btn_invio.setText("INVIA");
+        btn_invio.addActionListener(this::btn_invioActionPerformed);
 
-        btn_Help.setBackground(new java.awt.Color(0, 51, 255));
-        btn_Help.setText("jButton1");
+        btn_Help.setBackground(new java.awt.Color(51, 153, 0));
+        btn_Help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help.png"))); // NOI18N
+        btn_Help.setToolTipText("");
+        btn_Help.addActionListener(this::btn_HelpActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,7 +93,7 @@ public class Zoltar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(cb_Personalità, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_Personalita, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txt_msg, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
@@ -80,17 +112,64 @@ public class Zoltar extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_msg, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_Personalità, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_Personalita, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_invio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Help, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btn_Help, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cb_PersonalitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_PersonalitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_PersonalitaActionPerformed
+
+    private void txt_msgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_msgActionPerformed
+        // TODO add your handling code here:
+        btn_invioActionPerformed(evt);
+    }//GEN-LAST:event_txt_msgActionPerformed
+
+    private void btn_invioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_invioActionPerformed
+        // TODO add your handling code here:
+        String domanda = txt_msg.getText().trim();
+        if (domanda.isEmpty()) {
+            txt_Output.append("Errore: inserisci un testo.\n\n");
+            return;
+        }
+        if (client == null) {
+            txt_Output.append("Errore: server non disponibile.\n\n");
+            return;
+        }
+        String personalita = cb_Personalita.getSelectedItem().toString();
+        try {
+            String risposta = client.inviaMessaggio(domanda, personalita);
+            txt_Output.append("Tu: " + domanda + "\n");
+            txt_Output.append("Zoltar: " + risposta + "\n\n");
+            txt_msg.setText("");
+        } catch (IOException e) {
+            txt_Output.append("Errore di connessione al server.\n\n");
+        }
+    }//GEN-LAST:event_btn_invioActionPerformed
+
+    private void btn_HelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HelpActionPerformed
+        // TODO add your handling code here:
+        javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Benvenuto in Zoltar!\n\n"
+            + "1. Seleziona una personalità.\n"
+            + "2. Scrivi una domanda.\n"
+            + "3. Premi INVIA per ricevere una risposta casuale.\n\n"
+            + "Default: risposte misteriose.\n"
+            + "Ottimista: risposte positive.\n"
+            + "Pessimista: risposte negative e sarcastiche.",
+            "Aiuto - Zoltar",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE
+        );
+    }//GEN-LAST:event_btn_HelpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,11 +195,11 @@ public class Zoltar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Zoltar().setVisible(true));
     }
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Help;
     private javax.swing.JButton btn_invio;
-    private javax.swing.JComboBox<String> cb_Personalità;
+    private javax.swing.JComboBox<String> cb_Personalita;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txt_Output;
     private javax.swing.JTextField txt_msg;
