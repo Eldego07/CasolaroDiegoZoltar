@@ -25,7 +25,7 @@ public class CasolaroDiegoClient {
     private DataOutputStream output;
 
     public CasolaroDiegoClient() throws IOException {
-        socket = new Socket("127.0.0.1", porta);
+        socket = new Socket("localhost", porta);
 
         input = new DataInputStream(socket.getInputStream());
         output = new DataOutputStream(socket.getOutputStream());

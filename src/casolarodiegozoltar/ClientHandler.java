@@ -23,13 +23,8 @@ class ClientHandler implements Runnable {
     @Override
     public void run() {
         try {
-            DataInputStream input = new DataInputStream(
-                clientSocket.getInputStream()
-            );
-
-            DataOutputStream output = new DataOutputStream(
-                clientSocket.getOutputStream()
-            );
+            DataInputStream input = new DataInputStream(clientSocket.getInputStream());
+            DataOutputStream output = new DataOutputStream(clientSocket.getOutputStream());
 
             while (true) {
                 String personalita = input.readUTF();
@@ -45,7 +40,6 @@ class ClientHandler implements Runnable {
                 }
 
                 String risposta = p.rispondi();
-
                 output.writeUTF(risposta);
                 output.flush();
 

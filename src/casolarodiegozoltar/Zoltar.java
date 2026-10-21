@@ -19,9 +19,7 @@ public class Zoltar extends javax.swing.JFrame {
     private CasolaroDiegoClient client;
     public Zoltar() {
         initComponents();
-        getContentPane().setBackground(
-            new java.awt.Color(51, 153, 0)
-        );
+        getContentPane().setBackground(new java.awt.Color(51, 153, 0));
         cb_Personalita.setModel(
             new javax.swing.DefaultComboBoxModel<>(
                 new String[] {
@@ -67,18 +65,23 @@ public class Zoltar extends javax.swing.JFrame {
         setBackground(new java.awt.Color(51, 153, 0));
 
         cb_Personalita.setBackground(new java.awt.Color(139, 139, 139));
+        cb_Personalita.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
         cb_Personalita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cb_Personalita.addActionListener(this::cb_PersonalitaActionPerformed);
 
         txt_msg.setBackground(new java.awt.Color(139, 139, 139));
+        txt_msg.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
         txt_msg.addActionListener(this::txt_msgActionPerformed);
 
+        txt_Output.setEditable(false);
         txt_Output.setBackground(new java.awt.Color(139, 139, 139));
         txt_Output.setColumns(20);
+        txt_Output.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
         txt_Output.setRows(5);
         jScrollPane1.setViewportView(txt_Output);
 
         btn_invio.setBackground(new java.awt.Color(139, 139, 139));
+        btn_invio.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
         btn_invio.setText("INVIA");
         btn_invio.addActionListener(this::btn_invioActionPerformed);
 
@@ -92,19 +95,19 @@ public class Zoltar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(cb_Personalita, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(cb_Personalita, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txt_msg, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
+                .addComponent(txt_msg, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addComponent(btn_Help, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_invio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,12 +116,12 @@ public class Zoltar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_msg, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_Personalita, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_invio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Help, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69))
+                .addGap(43, 43, 43))
         );
 
         pack();
