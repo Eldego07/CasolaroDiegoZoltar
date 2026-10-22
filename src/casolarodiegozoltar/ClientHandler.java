@@ -13,7 +13,7 @@ import java.util.*;
  */
 class ClientHandler implements Runnable {
 
-   private final Socket clientSocket;
+    private final Socket clientSocket;
     private DataOutputStream dataOutputStream;
 
     public ClientHandler(Socket clientSocket) {
